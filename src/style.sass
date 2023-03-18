@@ -1,0 +1,142 @@
+$before-after-background-color: #1f1f1c
+/* other */
+@mixin flexcenter
+  display: flex
+  justify-content: center
+  align-items: center
+  
+@mixin size($w:auto,$h:auto)
+  width: $w
+  height: $h
+
+@mixin poR($L:auto,$T:auto)
+  position: relative
+  left: $L
+  top: $T
+@mixin poA-2($L:auto,$T:auto)
+  position: absolute
+  left: $L
+  top: $T
+  
+@mixin poA($l:50%,$t:50%)
+  position: absolute
+  left: $l
+  top: $t
+  transform: translate(-50%,-50%)
+
+@mixin bg-opacity
+  background: $opacity-0
+$opacity-0: transparent
+
+*
+  border: solid 1px white
+  box-sizing: border-box
+
+html,body
+  +size(100%,100%)
+  +flexcenter
+  margin: 0
+  padding: 50px
+  // padding-top: 50vh
+  
+body
+  font-family: 微軟正黑體
+    
+.card
+  width: 60vw
+  max-width: 500px
+
+.before-after-container
+  aspect-ratio: 1 / 1
+  background-color: green
+  width: 100%
+  // height: 15em
+  overflow: hidden
+  transition: all 0.3s ease-in-out
+  & figure
+    background-size: cover
+    position: relative
+    margin: 0
+    +size(100%,100%)
+
+    & .before_after
+      background-size: cover
+      border-right: 5px solid rgba(white, 0.7)
+      box-shadow: 10px 0 15px -13px #000
+      +size(50%,100%)
+      overflow: visible
+      position: absolute
+      bottom: 0
+      animation: first 2s 1 normal ease-in-out 0.1s
+      &::before
+        font-family: "Font Awesome 5 Free"
+        font-weight: 900
+        content: "\f337"
+        font-size: 2em
+        color: white
+        text-align: center
+        border: solid 2px white
+        border-radius: 16px
+        float: right
+        padding: 0 10px
+        margin-right: -3px
+        transform: translate(50%,-50%)
+        box-sizing: border-box
+        // +size(64px,auto)
+        +poR(0,50%)
+
+/*可以在iPad瀏覽器上滑動bar*/
+input.before_after_slider
+  -moz-appearance: none
+  -webkit-appearance: none
+  border: none
+  +bg-opacity
+  +size(100%,100vw)
+  +poR(0,-100vw)
+  margin: 0
+  padding: 0
+  outline: none
+  cursor: col-resize/*滑鼠變滑動標示*/
+  
+  &::-moz-range-track
+    +bg-opacity
+  &::-ms-track
+    border: none
+    background-color: $opacity-0
+    +size(100%,100vw)
+    +poR(0,-100vw)
+    margin: 0
+    padding: 0
+    outline: none
+    cursor: col-resize/*滑鼠變滑動標示*/
+    color: $opacity-0
+    
+  &::-ms-fill-lower
+    background-color: $opacity-0
+  
+  &::-webkit-slider-thumb
+    -webkit-appearance: none
+    +size(0.5%,100vw)
+    opacity: 0
+    
+  &::-moz-range-thumb
+    -moz-appearance: none
+    +size(0.5%,100vw)
+    opacity: 0
+    
+  &::-ms-thumb
+    +size(0.5%,100vw)
+    opacity: 0
+    
+  &::-ms-tooltip
+    display: none
+
+@keyframes first
+  0%
+    width: 0%
+
+  50%
+    width: 80%
+
+  100%
+    width: 50%
