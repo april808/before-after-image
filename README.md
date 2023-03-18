@@ -9,7 +9,7 @@ CodePen URL:
 
 1. 製作多項目的「前後圖」對比。
 1. 使用 font-awesome 替換`<input type=“range”>` icon。
-2. 想法為HTML 標籤中指定JS事件，後續用Vue變數調整背景圖片和id。 
+2. 改為`document.addEventListener(“input”, (event) => {` 監聽 if條件
 
 參考：
 - [Before & After Image](https://codepen.io/josetxu/pen/mJbmZY)

@@ -31,6 +31,10 @@ body {
   overflow: hidden;
   transition: all 0.3s ease-in-out;
 }
+.before-after-container:hover .before_after::before, .before-after-container:active .before_after::before {
+  transform: scale(1.5) translate(32.5%, -32.5%);
+  background-color: rgba(255, 255, 255, 0.5);
+}
 .before-after-container figure {
   background-size: cover;
   position: relative;
@@ -62,8 +66,9 @@ body {
   float: right;
   padding: 0 10px;
   margin-right: -3px;
-  transform: translate(50%, -50%);
+  transform: scale(1) translate(50%, -50%);
   box-sizing: border-box;
+  transition: 0.3s;
   position: relative;
   left: 0;
   top: 50%;
